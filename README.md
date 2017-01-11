@@ -1,0 +1,1 @@
+# gentelella-simple-angularjs
