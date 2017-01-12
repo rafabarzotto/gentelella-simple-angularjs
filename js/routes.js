@@ -30,7 +30,7 @@
  		}
  	})
 
- 	 	.state('register', {
+ 	.state('register', {
  		url: "/register",
  		controller: 'RegisterCtrl',
  		templateUrl: viewsPrefix + "register.html",
@@ -62,6 +62,13 @@
  			}
  		};
  	});
+ })
 
+ .run(function(User, $location) {
+ 	//Check if User is authenticated
+ 	if (User.getCachedCurrent() == null) {
+ 		User.getCurrent();
+ 		$location.path('/home');
+ 	};
 
  });

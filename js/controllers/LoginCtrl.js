@@ -1,8 +1,7 @@
 angular.module('app.login', ['lbServices'])
     .controller('LoginCtrl', function($scope, User, $location) {
 
-        console.log(User.getCachedCurrent());
-        if (User.getCachedCurrent() != null) {
+        if (User.getCachedCurrent() !== null) {
             $location.path('/home');
         }
 
@@ -49,7 +48,7 @@ angular.module('app.login', ['lbServices'])
         };
 
         $scope.goToRegister = function() {
-            //$location.path('register');
+            $location.path('/register');
         };
 
 

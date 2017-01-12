@@ -50,6 +50,6 @@ angular.module('app.register', ['lbServices'])
          * Show a popup with the given parameters
          */
         $scope.showAlert = function(title, errorMsg) {
-                console.log(title, errorMsg);
+            console.log(title, errorMsg);
         };
     });
