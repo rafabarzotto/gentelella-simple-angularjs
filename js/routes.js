@@ -4,20 +4,41 @@
 
  	$stateProvider
 
- 		.state('home', {
- 		url: "/home",
- 		templateUrl: viewsPrefix + "layout.html",
- 		controller: 'LayoutCtrl',
- 		data: {
- 			pageTitle: 'Home'
+ 		.state('index', {
+ 		url: '',
+ 		abstract: true,
+ 		views: {
+ 			'': {
+ 				templateUrl: viewsPrefix + 'layout/layout.html',
+ 				controller: 'LayoutCtrl'
+ 			},
+ 			'header@index': {
+ 				templateUrl: viewsPrefix + 'layout/header.html'
+ 			},
+ 			'menuLeft@index': {
+ 				templateUrl: viewsPrefix + 'layout/menuLeft.html'
+ 			},
+ 			'footer@index': {
+ 				templateUrl: viewsPrefix + 'layout/footer.html'
+ 			}
  		}
  	})
 
- 	.state('users', {
- 		url: "/users",
- 		templateUrl: viewsPrefix + "users.html",
- 		data: {
- 			pageTitle: 'Users'
+ 	.state('index.home', {
+ 		url: '/home',
+ 		views: {
+ 			'content': {
+ 				templateUrl: viewsPrefix + 'home.html'
+ 			}
+ 		}
+ 	})
+
+ 	.state('index.users', {
+ 		url: '/users',
+ 		views: {
+ 			'content': {
+ 				templateUrl: viewsPrefix + 'users.html'
+ 			}
  		}
  	})
 
@@ -37,15 +58,8 @@
  		data: {
  			pageTitle: 'Register'
  		}
- 	})
-
- 	.state('tables', {
- 		url: "/tables",
- 		templateUrl: viewsPrefix + "tables.html",
- 		data: {
- 			pageTitle: 'Tables'
- 		}
  	});
+
 
  	// caminho inicial/
  	$urlRouterProvider.otherwise("/login");
