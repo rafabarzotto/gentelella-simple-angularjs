@@ -1,5 +1,5 @@
-angular.module('app.login', ['lbServices'])
-    .controller('LoginCtrl', function($scope, User, $location) {
+angular.module('app.login', ['lbServices', 'angularSpinner'])
+    .controller('LoginCtrl', function($scope, User, $location, usSpinnerService, $rootScope) {
 
         if (User.getCachedCurrent() !== null) {
             $location.path('/home');
@@ -31,17 +31,19 @@ angular.module('app.login', ['lbServices'])
          * sign-in function for users which created an account
          */
         $scope.doLogin = function() {
+            $scope.startSpin();
             $scope.loginResult = User.login({
                     include: 'user',
                     rememberMe: $scope.loginData.rememberMe
                 }, $scope.loginData,
                 function() {
-                    console.log("certo");
+                    $scope.stopSpin();
                     var next = $location.nextAfterLogin || '/home';
                     $location.nextAfterLogin = null;
                     $location.path(next);
                 },
                 function(err) {
+                    $scope.stopSpin();
                     $scope.showAlert(err.statusText, err.data.error.message);
                     console.log("ERRO");
                 }
@@ -52,5 +54,26 @@ angular.module('app.login', ['lbServices'])
             $location.path('/register');
         };
 
+        $scope.startSpin = function() {
+            if (!$scope.spinneractive) {
+                usSpinnerService.spin('spinner-1');
+            }
+        };
+
+        $scope.stopSpin = function() {
+            if ($scope.spinneractive) {
+                usSpinnerService.stop('spinner-1');
+            }
+        };
+
+        $scope.spinneractive = false;
+
+        $rootScope.$on('us-spinner:spin', function(event, key) {
+            $scope.spinneractive = true;
+        });
+
+        $rootScope.$on('us-spinner:stop', function(event, key) {
+            $scope.spinneractive = false;
+        });
 
     });

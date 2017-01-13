@@ -83,7 +83,6 @@ $(document).ready(function() {
     $(window).smartresize(function(){  
         setContentHeight();
     });
-
     setContentHeight();
 
     // fixed sidebar
@@ -153,16 +152,16 @@ $(document).ready(function() {
 // /Switchery
 
 // iCheck
-$(document).ready(function() {
-    if ($("input.flat")[0]) {
-        $(document).ready(function () {
-            $('input.flat').iCheck({
-                checkboxClass: 'icheckbox_flat-green',
-                radioClass: 'iradio_flat-green'
-            });
-        });
-    }
-});
+// $(document).ready(function() {
+//     if ($("input.flat")[0]) {
+//         $(document).ready(function () {
+//             $('input.flat').iCheck({
+//                 checkboxClass: 'icheckbox_flat-green',
+//                 radioClass: 'iradio_flat-green'
+//             });
+//         });
+//     }
+// });
 // /iCheck
 
 // Table
@@ -233,12 +232,12 @@ $(document).ready(function() {
 });
 
 // NProgress
-if (typeof NProgress != 'undefined') {
-    $(document).ready(function () {
-        NProgress.start();
-    });
+// if (typeof NProgress != 'undefined') {
+//     $(document).ready(function () {
+//         NProgress.start();
+//     });
 
-    $(window).load(function () {
-        NProgress.done();
-    });
-}
+//     $(window).load(function () {
+//         NProgress.done();
+//     });
+// }
