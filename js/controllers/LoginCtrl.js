@@ -11,6 +11,7 @@ angular.module('app.login', ['lbServices'])
          * ionic creating a child scope for the ion-content directive
          */
         $scope.loginData = {};
+        $scope.loginData.rememberMe = false;
 
         /**
          * @name showAlert()
@@ -32,7 +33,7 @@ angular.module('app.login', ['lbServices'])
         $scope.doLogin = function() {
             $scope.loginResult = User.login({
                     include: 'user',
-                    rememberMe: true
+                    rememberMe: $scope.loginData.rememberMe
                 }, $scope.loginData,
                 function() {
                     console.log("certo");

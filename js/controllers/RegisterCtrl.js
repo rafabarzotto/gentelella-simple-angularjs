@@ -26,7 +26,7 @@ angular.module('app.register', ['lbServices'])
                 .then(function(res) {
                     User.login({
                             include: 'user',
-                            rememberMe: true
+                            rememberMe: false
                         }, $scope.registration)
                         .$promise
                         .then(function(res) {
