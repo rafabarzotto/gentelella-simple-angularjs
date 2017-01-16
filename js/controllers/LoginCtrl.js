@@ -1,5 +1,5 @@
 angular.module('app.login', ['lbServices', 'angularSpinner'])
-    .controller('LoginCtrl', function($scope, User, $location, usSpinnerService, $rootScope) {
+    .controller('LoginCtrl', function($scope, User, $location, usSpinnerService, $rootScope, notificationService) {
 
         if (User.getCachedCurrent() !== null) {
             $location.path('/home');
@@ -22,7 +22,6 @@ angular.module('app.login', ['lbServices', 'angularSpinner'])
          */
         $scope.showAlert = function(title, errorMsg) {
             console.log(title, errorMsg);
-            console.log($scope.loginError);
         };
 
         /**
@@ -37,12 +36,14 @@ angular.module('app.login', ['lbServices', 'angularSpinner'])
                     rememberMe: $scope.loginData.rememberMe
                 }, $scope.loginData,
                 function() {
+                    notificationService.success('Login Success!');
                     $scope.stopSpin();
                     var next = $location.nextAfterLogin || '/home';
                     $location.nextAfterLogin = null;
                     $location.path(next);
                 },
                 function(err) {
+                    notificationService.error(err.statusText + ' - ' + err.data.error.message);
                     $scope.stopSpin();
                     $scope.showAlert(err.statusText, err.data.error.message);
                     console.log("ERRO");
@@ -75,5 +76,6 @@ angular.module('app.login', ['lbServices', 'angularSpinner'])
         $rootScope.$on('us-spinner:stop', function(event, key) {
             $scope.spinneractive = false;
         });
+
 
     });
