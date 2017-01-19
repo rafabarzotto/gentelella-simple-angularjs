@@ -45,36 +45,12 @@
             </div>
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <h3>Routes Permission</h3>
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" class="flat" ng-click="toggleSelection('/users')" ng-checked="">
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" class="flat" ng-click="toggleSelection('/preco')" ng-checked=""> Preco
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" class="flat" ng-click="toggleSelection('/teste')" ng-checked=""> teste
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" class="flat" ng-click="toggleSelection('/dash')" ng-checked=""> dash
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" class="flat" ng-click="toggleSelection('/naosei')" ng-checked=""> nao sei
-                        </label>
-                    </div>
+                <div class="checkbox" ng-repeat="route in routes">
+                <label>
+                    <input type="checkbox" name="selectedRoutes[]" value="{{route}}" ng-checked="selection.routes.indexOf(route) > -1" ng-click="toggleSelection(route)"> {{route}}
+                </label>
                 </div>
-                </br>
-                {{selection}}
             </div>
+            {{selection}}
         </div>
     </div>
-</div>

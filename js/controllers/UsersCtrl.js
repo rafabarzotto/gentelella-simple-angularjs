@@ -28,6 +28,8 @@ angular.module('app.users', ['lbServices'])
         }
     );
 
+    $scope.routes = ['/users', '/teste', '/dash', '/naosei'];
+
     $scope.selection = User.findById({
             id: $stateParams.id,
             filter: {
@@ -42,13 +44,6 @@ angular.module('app.users', ['lbServices'])
             /* error */
         }
     );
-
-    //$scope.selection = {'routes': {'users':true, 'naosei':true}}
-
-    $scope.getChecked = function getChecked(route) {
-
-    };
-
 
     $scope.toggleSelection = function toggleSelection(route) {
         var idx = $scope.selection.routes.indexOf(route);
@@ -76,7 +71,7 @@ angular.module('app.users', ['lbServices'])
         //     function(err) {
         //         console.log("ERRO");
         //     });
-        
+
     };
 
 
