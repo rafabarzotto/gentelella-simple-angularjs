@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app.register', ['lbServices'])
     .controller('RegisterCtrl', function($scope, User, $location) {
         /**

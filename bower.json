@@ -27,6 +27,8 @@
     "angular-spinner": "^0.8.1",
     "nprogress": "^0.2.0",
     "angular-animate": "^1.6.1",
-    "angular-pnotify": "^0.1.2"
+    "angular-pnotify": "^0.1.2",
+    "angular-permission": "^5.1.0",
+    "ngstorage": "^0.3.11"
   }
 }

@@ -17,3 +17,12 @@ outros
     // 'ngStorage',
     // 'ui.router',
     // 'statesTree'
+
+
+//     <div class="form-group">
+//     <label ng-repeat="route in usersEdit.routes" class="checkbox-inline">
+//         <input type="checkbox" name="selectedRoutes[]" value="{{route}}" ng-checked="selection.indexOf(route) > -1" ng-click="toggleSelection(route)"> {{route}}
+//     </label>
+// </div>
+// </br>
+// {{selection}}

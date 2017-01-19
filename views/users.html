@@ -1,12 +1,39 @@
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
-        <!-- conteudo -->
+            <!-- conteudo -->
         </div>
         <div class="clearfix"></div>
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-  
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Users <small>Try hovering over the rows</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>E-mail</th>
+                                    <th>Username</th>
+                                    <th>#</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="user in users">
+                                <td></td>
+                                <td>{{user.name}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.username}}</td>
+                                <td><a href="#!/users/{{user.id}}" class="close-link"><i class="fa fa-edit"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

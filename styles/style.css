@@ -1,0 +1,8 @@
+.ui-pnotify {
+    top: 50px;
+    /*Replace the 25px with the top that you need*/
+    right: 25px;
+    position: absolute;
+    height: auto;
+    z-index: 9999
+}

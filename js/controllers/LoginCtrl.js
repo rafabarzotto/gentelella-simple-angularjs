@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app.login', ['lbServices', 'angularSpinner'])
     .controller('LoginCtrl', function($scope, User, $location, usSpinnerService, $rootScope, notificationService) {
 
@@ -35,7 +37,7 @@ angular.module('app.login', ['lbServices', 'angularSpinner'])
                     include: 'user',
                     rememberMe: $scope.loginData.rememberMe
                 }, $scope.loginData,
-                function() {
+                function(res) {
                     notificationService.success('Login Success!');
                     $scope.stopSpin();
                     var next = $location.nextAfterLogin || '/home';
