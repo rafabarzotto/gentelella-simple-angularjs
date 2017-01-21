@@ -57,6 +57,15 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider, $httpP
         }
     })
 
+    .state('index.teste', {
+        url: '/teste',
+        views: {
+            'content': {
+                templateUrl: viewsPrefix + 'teste.html'
+            }
+        }
+    })
+
     .state('login', {
         url: "/login",
         controller: 'LoginCtrl',
@@ -95,7 +104,9 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider, $httpP
 
 .run(function(User, $location, $rootScope, notificationService, $sessionStorage) {
     //Check if User is authenticated
-    $sessionStorage.currentUser = {'routes':[]};
+    $sessionStorage.currentUser = {
+        'routes': []
+    };
 
     if (User.getCachedCurrent() === null) {
         User.getCurrent();

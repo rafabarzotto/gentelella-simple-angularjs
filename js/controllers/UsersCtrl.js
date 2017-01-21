@@ -4,26 +4,26 @@ angular.module('app.users', ['lbServices'])
     .controller('UsersCtrl', function($scope, User, $state) {
 
         $scope.users = User.find(
-            function(list) {
+            function(res) {
                 /* success */
             },
-            function(errorResponse) {
+            function(err) {
                 /* error */
             }
         );
 
     })
 
-.controller('UsersCtrlEdit', function($scope, User, $state, $stateParams, $sessionStorage) {
+.controller('UsersCtrlEdit', function($scope, User, $state, $stateParams, $sessionStorage, notificationService) {
 
     $scope.usersEdit = User.findById({
             id: $stateParams.id
         },
-        function(response) {
+        function(res) {
             /* success */
         },
 
-        function(errorResponse) {
+        function(err) {
             /* error */
         }
     );
@@ -36,11 +36,11 @@ angular.module('app.users', ['lbServices'])
                 fields: 'routes'
             }
         },
-        function(response) {
+        function(res) {
             /* success */
         },
 
-        function(errorResponse) {
+        function(err) {
             /* error */
         }
     );
@@ -61,16 +61,22 @@ angular.module('app.users', ['lbServices'])
 
     $scope.save = function toggleSelection(usersEdit) {
         usersEdit.routes = $scope.selection.routes;
-        console.log(usersEdit);
-        // User.update({
-        //         id: $stateParams.id
-        //     }, usersEdit,
-        //     function(res) {
-        //         console.log("OK");
-        //     },
-        //     function(err) {
-        //         console.log("ERRO");
-        //     });
+        User.updateAll({
+                where: {
+                    id: $stateParams.id
+                }
+            }, usersEdit,
+            function(res) {
+                $sessionStorage.currentUser.routes = $scope.selection.routes;
+                notificationService.success('Update Success!');
+            },
+
+            function(err) {
+                notificationService.error(err.statusText + ' - ' + err.data.error.message);
+            }
+        );
+
+
 
     };
 
