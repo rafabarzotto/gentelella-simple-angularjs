@@ -28,7 +28,7 @@ angular.module('app.users', ['lbServices'])
         }
     );
 
-    $scope.routes = ['/users', '/teste', '/dash', '/naosei'];
+    $scope.routes = ['/users', '/teste', '/dash', '/naosei', '/preco'];
 
     $scope.selection = User.findById({
             id: $stateParams.id,

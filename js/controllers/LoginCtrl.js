@@ -38,16 +38,15 @@ angular.module('app.login', ['lbServices', 'angularSpinner'])
                     rememberMe: $scope.loginData.rememberMe
                 }, $scope.loginData,
                 function(res) {
-                    notificationService.success('Login Success!');
+                    notificationService.success('Login Success!', 'bottom_right');
                     $scope.stopSpin();
                     var next = $location.nextAfterLogin || '/home';
                     $location.nextAfterLogin = null;
                     $location.path(next);
                 },
                 function(err) {
-                    notificationService.error(err.statusText + ' - ' + err.data.error.message);
+                    notificationService.error(err.statusText + ' - ' + err.data.error.message, 'bottom_right');
                     $scope.stopSpin();
-                    $scope.showAlert(err.statusText, err.data.error.message);
                     console.log("ERRO");
                 }
             );

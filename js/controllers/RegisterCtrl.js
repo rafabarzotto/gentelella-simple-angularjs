@@ -23,6 +23,7 @@ angular.module('app.register', ['lbServices'])
          */
         $scope.register = function() {
             $scope.registration.created = new Date().toJSON();
+            $scope.registration.routes = [];
             $scope.user = User.create($scope.registration)
                 .$promise
                 .then(function(res) {
